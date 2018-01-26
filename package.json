@@ -1,0 +1,26 @@
+{
+  "name": "soapservice",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "startserver": "node server/app.js",
+    "runclient": "node client/client.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PetroAndrushchak/SOAPService.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PetroAndrushchak/SOAPService/issues"
+  },
+  "homepage": "https://github.com/PetroAndrushchak/SOAPService#readme",
+  "dependencies": {
+    "blob": "0.0.4",
+    "chance": "^1.0.13",
+    "express": "^4.16.2",
+    "soap": "^0.23.0"
+  }
+}

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="mywsdl" targetNamespace="http://localhost:8002/mywsdl" 
+  xmlns="http://localhost:8002/mywsdl" 
+  xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" 
+  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
+  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" 
+  xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <wsdl:message name="sumarRequest">
+    <wsdl:part name="a" type="xs:string"/>
+    <wsdl:part name="b" type="xs:string"/>
+  </wsdl:message>
+  <wsdl:message name="sumarResponse">
+    <wsdl:part name="sumres" type="xs:string"/>
+  </wsdl:message>
+  <wsdl:message name="loginRequest">
+    <wsdl:part name="user" type="xs:string"/>
+  </wsdl:message>
+  <wsdl:message name="loginResponse">
+    <wsdl:part name="result" type="xs:string"/>
+  </wsdl:message>
+  <wsdl:message name="uploadImageRequest">
+    <wsdl:part name="imageData" type="xs:base64Binary"/>
+    <wsdl:part name="imageName" type="xs:string"/>
+    <wsdl:part name="imageType" type="xs:string"/>
+  </wsdl:message>
+  <wsdl:message name="uploadImageResponse">
+    <wsdl:part name="result" type="xs:string"/>
+  </wsdl:message>
+  <wsdl:portType name="myServiceType">
+    <wsdl:operation name="sumar">
+      <wsdl:input message="sumarRequest"/>
+      <wsdl:output message="sumarResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="logIn">
+      <wsdl:input message="loginRequest"/>
+      <wsdl:output message="loginResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="uploadImage">
+      <wsdl:input message="uploadImageRequest"/>
+      <wsdl:output message="uploadImageResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="MyServerBinding" type="myServiceType">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="sumar">
+      <soap:operation soapAction="sumar"/>
+      <wsdl:input>
+        <soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="logIn">
+      <soap:operation soapAction="logIn"/>
+      <wsdl:input>
+        <soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="uploadImage">
+      <soap:operation soapAction="uploadImage"/>
+      <wsdl:input>
+        <soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="MyServer">
+    <wsdl:port binding="MyServerBinding" name="MyPort">
+      <soap:address location="http://localhost:8002/mywsdl"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
